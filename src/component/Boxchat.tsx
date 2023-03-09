@@ -12,7 +12,7 @@ export default function Boxchat({ }: Props) {
      const [click, setClick] = useState(true)
      const [prompt, setPrompt] = useState('')
      const [logChat, setLogChat] = useState([
-          { type: 'AI', mess: 'xin chao, toi co the giup gi cho ban?' },
+          { type: 'AI', mess: 'Hello, Can i help you?' },
           // { type: 'Human', mess: 'any question' }
      ])
      // console.log(...logChat);
@@ -35,18 +35,10 @@ export default function Boxchat({ }: Props) {
      }
 
      const xuly = async () => {
-
-          
           let logChatFilter = []
           for (let i = 1; i < logChat.length; i++) {
                logChatFilter.push(logChat[i])
           }
-          
-
-         
-         
-
-
           callApi(valueFinal + final)
 
           // await callApi("Human: what is redux\nAI: Redux is a library for managing application state. It is most commonly used with React, but can be used with any other JavaScript framework. Redux allows developers to store and manage application state in a single place and access it in multiple components throughout an application.\nHuman: what is the lastes this version\nAI: The latest version of Redux is v4.0.1, released on March 25, 2020.")
@@ -56,14 +48,12 @@ export default function Boxchat({ }: Props) {
      const callApi = async (text: string) => {
           const { Configuration, OpenAIApi } = require("openai");
           const configuration = new Configuration({
-               apiKey: "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",
+               apiKey: "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",
           });
           const openai = new OpenAIApi(configuration);
           const response = await openai.createCompletion({
                model: "text-davinci-003",
-               // prompt:text,
                prompt: text,
-               // max_tokens: 4000,
                // temperature: 0.7,
                temperature: 0.1,
                max_tokens: 4000,
@@ -85,15 +75,15 @@ export default function Boxchat({ }: Props) {
           console.log(response.data.choices[0].text)
           console.log('value', valueFinal)
           console.log('response',response)
+          console.log('value',value)
      }
 
      useEffect(() => {
           executeScroll()
           // console.log('QA', QA)
-          // console.log('value',valueFinal)
           // console.log('QA', QAinit)
           // console.log('prom', prompt)
-          console.log('final', final)
+          // console.log('final', final)
      }, [QAinit])
 
 
